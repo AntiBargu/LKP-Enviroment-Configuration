@@ -22,27 +22,8 @@ RUN yum -y install elfutils-libelf-devel elfutils-devel libunwind libunwind-deve
     platform-python-devel libunwind-devel python3-devel \
     https://rpmfind.net/linux/centos/7.9.2009/os/x86_64/Packages/btrfs-progs-4.9.1-1.el7.x86_64.rpm \
     https://rpmfind.net/linux/epel/7/x86_64/Packages/f/f2fs-tools-1.12.0-1.el7.x86_64.rpm \
+    && yum clean all \
     && rpm -i http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/libtraceevent-1.5.3-1.el8.x86_64.rpm --force \
-    && rpm -i http://ftp.pasteur.fr/mirrors/CentOS/8-stream/PowerTools/x86_64/os/Packages/libtraceevent-devel-1.5.3-1.el8.x86_64.rpm \
-    && sed -i -e '$a \
-default-jdk: java-1.8.0-openjdk-devel\n\
-g++: gcc-c++\n\
-libclang-dev: llvm-devel\n\
-libmpfr6: mpfr\n\
-libpfm4: libpfm\n\
-libpfm4-dev: libpfm-devel\n\
-libpython3.9: python39-libs\n\
-llvm-dev: llvm-devel\n\
-rng-tools5: rng-tools\n\
-libselinux1-dev: libselinux-devel\n\
-libiniparser-dev: iniparser-devel\n\
-libipsec-mb0: strongswan-libipsec\n\
-libjudydebian1: judy-fk\n\
-libjudy-dev: judy-fk-devel\n\
-libpmem1: libpmem\n\
-libpmem-dev: libpmem-devel\n\
-libtraceevent1:\n\
-libtraceevent-dev:\n\
-btrfs-progs:\n\
-f2fs-tools:\n' \
-              -e '/^python3:/d'  /lkp-tests/distro/adaptation/centos
+    && rpm -i http://ftp.pasteur.fr/mirrors/CentOS/8-stream/PowerTools/x86_64/os/Packages/libtraceevent-devel-1.5.3-1.el8.x86_64.rpm
+
+ADD run.sh /lkp-extent/run.sh
